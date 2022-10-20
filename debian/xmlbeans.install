@@ -1,0 +1,11 @@
+bin/dumpxsb       /usr/bin/
+bin/inst2xsd      /usr/bin/
+bin/scomp         /usr/bin/
+bin/sdownload     /usr/bin/
+bin/sfactor       /usr/bin/
+bin/svalidate     /usr/bin/
+bin/validate      /usr/bin/
+bin/xpretty       /usr/bin/
+bin/xsd2inst      /usr/bin/
+bin/xsdtree       /usr/bin/
+bin/xstc          /usr/bin/

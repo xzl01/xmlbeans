@@ -1,0 +1,164 @@
+xmlbeans (3.0.2-1) unstable; urgency=medium
+
+  * New upstream release
+    - No longer build the qname jar
+    - Updated the Maven poms
+  * Standards-Version updated to 4.3.0
+  * Switch to debhelper level 11
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 21 Jan 2019 12:02:22 +0100
+
+xmlbeans (2.6.0+dfsg-4) unstable; urgency=medium
+
+  * Team upload
+
+  [ Eugene Zhukov ]
+  * Moved the package to Git
+
+  [ Emmanuel Bourg ]
+  * Removed the StAX dependency in the Maven pom (provided by the JDK)
+  * Build with the DH sequencer instead of CDBS
+  * Removed build-xml.patch
+  * Converted debian/copyright to the Copyright Format 1.0
+  * Track and download the new releases from GitHub
+  * Standards-Version updated to 4.1.5
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 31 Jul 2018 00:17:15 +0200
+
+xmlbeans (2.6.0+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Update uploaders (Closes: #889447)
+  * Add source file encoding (Closes: #893494)
+  * Update Standards-Version to 4.1.4 (get-orig-source rules target removed)
+  * Add d/xmlbeans.docs to address Lintian error
+  * Fix d/watch file
+  * Bump debhelper to version 11
+
+ -- Eugene Zhukov <eugene@debian.org>  Sun, 22 Apr 2018 14:05:50 +0300
+
+xmlbeans (2.6.0+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * Refresh patch for Saxon-HE to exclude xpath and xquiery classes.
+
+ -- Eugene Zhukov <eugene@debian.org>  Thu, 02 Mar 2017 17:35:21 +0200
+
+xmlbeans (2.6.0+dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+  * Repack the original tarball and remove prebuilt jar files.
+    jam and piccolo jars contain only source files. (Closes: #822091)
+  * Declare compliance with Debian Policy 3.9.8.
+  * libxmlbeans-java: Add missing libsaxonhe-java dependency and fix
+    artifactid in xpath.pom.
+    Thanks to Yadickson Soto for the report. (Closes: #820839)
+  * wrap-and-sort -sa.
+  * Use only Build-Depends field.
+  * Switch to compat level 10.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 24 Jan 2017 00:49:03 +0100
+
+xmlbeans (2.6.0-4) unstable; urgency=medium
+
+  * Team upload
+  * Add patch to build with Saxon-HE instead of Saxon-B
+  * d/control: use https for Vcs-Browser uri
+
+ -- Eugene Zhukov <eugene@debian.org>  Sat, 20 Feb 2016 08:49:20 +0200
+
+xmlbeans (2.6.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Fixed a build failure with Java 8 (Closes: #814209)
+  * Standards-Version updated to 3.9.7 (no changes)
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 10 Feb 2016 10:53:21 +0100
+
+xmlbeans (2.6.0-2) unstable; urgency=medium
+
+  * Upload to unstable
+  * Standards-Version updated to 3.9.5 (no changes)
+  * Switch to debhelper level 9
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 25 Feb 2014 23:49:37 +0100
+
+xmlbeans (2.6.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * Refreshed the patches
+  * Updated the poms
+  * Use canonical URLs for the Vcs-* fields
+  * Updated Standards-Version to 3.9.4 (no changes)
+  * debian/rules: Updated the URL of the Maven repository used to fetch the poms
+  * debian/rules: Improved the clean target
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 10 Jul 2013 16:31:35 +0200
+
+xmlbeans (2.5.0-4) unstable; urgency=low
+
+  * d/rules Fix installation of Maven artifacts into /usr/share/maven-repo/.
+  * d/control: Drop JRE depends from libxmlbeans-java package.
+  * d/control: Bump Standards-Version to 3.9.2: no changes needed.
+  * d/control: Add Vcs-* headers.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sat, 25 Jun 2011 13:15:27 +0200
+
+xmlbeans (2.5.0-3) unstable; urgency=low
+
+  * Fix /usr/bin/validate filename conflict with wdg-html-validator:
+    - rename our "validate" to "xsdvalidate".
+    - d/README.Debian: describe this change wrt upstream.
+    (Closes: #578032)
+  * Remove d/README.source since we switched to source format 3.0
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Tue, 20 Apr 2010 23:29:37 +0200
+
+xmlbeans (2.5.0-2) unstable; urgency=low
+
+  [ Damien Raude-Morvan ]
+  * New xmlbeans package which contains CLI tools (Closes: #571245)
+  * TODO: build manpages for those tools
+
+  [ Torsten Werner ]
+  * Change maintainers into Maintainers.
+  * Switch to source format 3.0.
+  * Install tools into the xmlbeans packages.
+
+ -- Torsten Werner <twerner@debian.org>  Sun, 11 Apr 2010 21:55:26 +0200
+
+xmlbeans (2.5.0-1) unstable; urgency=low
+
+  * Import package in Debian based on Thierry Carrez <thierry.carrez@ubuntu.com>
+    work. Thanks Thierry! (Closes: #567778)
+  * New upstream release.
+  * Bump Debhelper compat level to 7
+  * Update to Standards-Version 3.8.4:
+    - Move to java section
+    - Add Vcs-* fields to pkg-java svn repository
+  * Add debian/watch to track upstream releases
+  * Move ant and default-jdk to Build-Depends (needed for clean target)
+  * Use Quilt as patch system:
+    - Update debian/rules
+    - Add quilt to Build-Depends
+    - Update all patches
+    - Add debian/README.source
+  * Update and review of debian/copyright
+  * Install JARs in maven-repository
+    - Build-Depends on maven-repo-helper
+    - Use mh_installjar to install JARs
+    - Add a get-orig-pom target in debian/rules
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sun, 31 Jan 2010 19:49:55 +0100
+
+xmlbeans (2.4.0-0ubuntu2) jaunty; urgency=low
+
+  * Do not use bundled oldxbean.jar to build, build-dep on itself instead.
+
+ -- Thierry Carrez <thierry.carrez@ubuntu.com>  Thu, 19 Feb 2009 13:06:11 +0000
+
+xmlbeans (2.4.0-0ubuntu1) jaunty; urgency=low
+
+  * Initial release
+
+ -- Thierry Carrez <thierry.carrez@ubuntu.com>  Tue, 17 Feb 2009 19:59:55 +0000

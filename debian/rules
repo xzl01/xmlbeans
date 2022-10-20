@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+export CLASSPATH=/usr/share/java/xmlbeans.jar
+
+%:
+	dh $@ --with maven-repo-helper
+
+override_dh_auto_build:
+	mkdir -p external/lib/
+	ln -s /usr/share/java/xmlbeans.jar external/lib/oldxbean.jar
+	ln -s /usr/share/java/junit.jar    external/lib/junit.jar
+
+	mkdir -p build/lib/
+	ln -s /usr/share/java/geronimo-stax-1.0-spec.jar build/lib/jsr173_1.0_api.jar
+
+	ANT_OPTS=-Dfile.encoding=iso-8859-1 dh_auto_build -- xbean.jar
+
+override_dh_install:
+	dh_install
+
+	# Rename to fix filename conflict: See #578032
+	mv debian/xmlbeans/usr/bin/validate debian/xmlbeans/usr/bin/xsdvalidate
+
+POM_VERSION := 3.0.2
+
+get-orig-pom:
+	wget -O debian/poms/xmlbeans.xml https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/$(POM_VERSION)/xmlbeans-$(POM_VERSION).pom
+	wget -O debian/poms/xpath.xml https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xpath/$(POM_VERSION)/xmlbeans-xpath-$(POM_VERSION).pom

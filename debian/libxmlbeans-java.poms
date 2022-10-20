@@ -1,0 +1,2 @@
+debian/poms/xmlbeans.xml --java-lib --artifact=build/lib/xbean.jar
+debian/poms/xpath.xml    --java-lib --artifact=build/lib/xbean_xpath.jar

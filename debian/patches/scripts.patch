@@ -1,0 +1,161 @@
+Description: Fix XMLBEANS_LIB variables in all CLI scripts
+ to use /usr/share/java/
+Author: Damien Raude-Morvan <drazzib@debian.org>
+Last-Update: 2010-03-26
+Forwarded: not-needed
+--- a/bin/dumpxsb
++++ b/bin/dumpxsb
+@@ -18,11 +18,9 @@
+ #XSB file dumper
+ #Prints the contents of an xsb file in human-readmble form
+ 
+-echo `dirname $0`
++XMLBEANS_LIB=/usr/share/java
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
+-
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/inst2xsd
++++ b/bin/inst2xsd
+@@ -18,9 +18,9 @@
+ #Instance to Schema tool
+ #Builds xsd files from xml instance files.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/scomp
++++ b/bin/scomp
+@@ -18,9 +18,9 @@
+ #Schema compiler
+ #Builds XBean types from xsd files.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$JAVA_HOME/lib/tools.jar:$XMLBEANS_LIB/resolver.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$JAVA_HOME/lib/tools.jar:$XMLBEANS_LIB/resolver.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/sdownload
++++ b/bin/sdownload
+@@ -18,9 +18,9 @@
+ #Schema downloader
+ #Tool to download Schema files
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/sfactor
++++ b/bin/sfactor
+@@ -20,9 +20,9 @@
+ ## Factors redundant definitions out of a set of schemas and 
+ ## uses imports instead.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/svalidate
++++ b/bin/svalidate
+@@ -19,9 +19,9 @@
+ #
+ # Validates an instance against a schema.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/jsr173_1.0_ri.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/jsr173_1.0_ri.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/validate
++++ b/bin/validate
+@@ -19,9 +19,9 @@
+ #
+ # Validates an instance against a schema.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/xpretty
++++ b/bin/xpretty
+@@ -17,9 +17,9 @@
+ 
+ #Invokes pretty printer
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/xsd2inst
++++ b/bin/xsd2inst
+@@ -17,9 +17,9 @@
+ 
+ #Schema to instance tool
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/xsdtree
++++ b/bin/xsdtree
+@@ -17,9 +17,9 @@
+ 
+ # Invokes type hierarchy printer
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
+--- a/bin/xstc
++++ b/bin/xstc
+@@ -17,9 +17,9 @@
+ 
+ # Invokes XSTC
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java
+ 
+-cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
++cp=$XMLBEANS_LIB/xmlbeans.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
+ 
+ case "`uname`" in
+     CYGWIN*)
