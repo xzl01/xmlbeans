@@ -1,0 +1,14 @@
+Description: Fixes a build failure with xmlbeans 3
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/build.xml
++++ b/build.xml
+@@ -307,7 +307,7 @@
+ 
+         <schemaCompProd classpathref="oldxbean" dest="build/bootstrap"/>
+ 
+-        <move file="build/bootstrap/generated-resources/schemaorg_apache_xmlbeans" tofile="build/bootstrap/generated-resources/org/apache/xmlbeans/metadata"/>
++        <move file="build/bootstrap/generated-resources/schemaorg_apache_xmlbeans" tofile="build/bootstrap/generated-resources/org/apache/xmlbeans/metadata" failonerror="false"/>
+ 
+         <replaceHolder srcDir="build/bootstrap/generated-sources" rscDir="build/bootstrap/generated-resources" schemaName="sXMLLANG"/>
+         <replaceHolder srcDir="build/bootstrap/generated-sources" rscDir="build/bootstrap/generated-resources" schemaName="sXMLSCHEMA"/>

@@ -1,0 +1,82 @@
+/*   Copyright 2004 The Apache Software Foundation
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+import javax.xml.namespace.QName;
+import org.apache.xmlbeans.*;
+
+import dumbNS.RootDocument;
+
+
+/**
+ *  Test Class that extends the abstract base class FilterXmlObject
+ *  The only method that needs to be implemented is underlyingXmlObject();
+ *
+ *  @author: Raju Subramanian.
+ */
+
+public class SimpleXmlObject
+                    extends FilterXmlObject
+{
+
+    /**
+     *  The underlying XmlObject to which all calls will be delegated
+     */
+    private transient XmlObject _under;
+
+    /**
+     *  Default constructor that creates a XmlObject from the instance
+     *  xbean/simple/dumb/dumb.xml
+     */
+    public SimpleXmlObject()
+            throws Exception
+    {
+        try {
+            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"+
+                         "<root xmlns=\"dumbNS:::\" xmlns:bar=\"barNS\" b=\"3\" bar:b=\"4\"/>";
+            RootDocument rootDoc = (RootDocument)XmlObject.Factory.parse(xml);
+            // Set the underlying XmlObject
+            _under = (XmlObject) rootDoc;
+
+        } catch (Exception e)
+        {
+            throw new Exception("Error creating XmlObject: " + e);
+        }
+    }
+
+    /**
+     *  The underlyingXmlObject() implementation
+     */
+    public XmlObject underlyingXmlObject()
+    {
+        return _under;
+    }
+
+    public XmlObject substitute(javax.xml.namespace.QName qName,org.apache.xmlbeans.SchemaType schemaType){
+        return underlyingXmlObject().substitute(qName, schemaType);
+    }
+
+    public void dump(){
+        System.out.println( _under.xmlText());
+    }
+
+    /**
+     *
+     */
+   public static void main (String args[]) throws Exception
+   {
+        SimpleXmlObject test = new SimpleXmlObject();
+        System.out.println(test.xmlText());
+   }
+}

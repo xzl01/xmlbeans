@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://xbean/scomp/derivation/Emtpy"
+    targetNamespace="http://xbean/scomp/derivation/Emtpy"
+    xmlns:base="http://xbean/scomp/contentType/ComplexTypeTest"
+    >
+
+    <xsd:import namespace="http://xbean/scomp/contentType/ComplexTypeTest"
+        schemaLocation="../contentType/ComplexTypeTest.xsd"/>
+
+    <xsd:complexType name="ExtendedEmptyT" mixed="true">
+        <xsd:complexContent>
+            <xsd:extension base="base:emptyT">
+                <xsd:sequence>
+                    <xsd:element name="extendedChild">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="subCh1" type="xsd:string"/>
+                                <xsd:element name="subCh2" type="xsd:float"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="extendedAttr" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--restriction only applies to attrs-->
+    <xsd:complexType name="RestrictedEmptyT">
+       <xsd:complexContent>
+           <xsd:restriction base="base:emptyT">
+               <xsd:attribute name="emptyAttr" type="xsd:string" fixed="myval"/>
+           </xsd:restriction>
+       </xsd:complexContent>
+
+
+    </xsd:complexType>
+
+    <xsd:element name="ExtendedEmptyElt" type="ExtendedEmptyT"/>
+     <xsd:element name="RestrictedEmptyElt" type="RestrictedEmptyT"/>
+
+
+</xsd:schema>

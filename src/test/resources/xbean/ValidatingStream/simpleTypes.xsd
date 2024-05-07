@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<xsd:schema targetNamespace="http://openuri.org/test/SimType"
+            xmlns:tns="http://openuri.org/test/SimType"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+    <xsd:simpleType name="ageType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="100"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="qNameType"
+                    xmlns:my="http://openuri.org/test/My">
+        <xsd:restriction base="xsd:QName">
+            <xsd:enumeration value="my:foo"/>
+            <xsd:enumeration value="my:bar"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="Age" type="tns:ageType"/>
+    <xsd:element name="QN" type="tns:qNameType"/>
+</xsd:schema>

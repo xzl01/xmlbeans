@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="shiporder" type="shiporderType"/>
+  <xs:complexType name="shiporderType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="orderperson" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="shiptoType" name="shipto"/>
+      <xs:element type="itemType" name="item" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:int" name="orderid" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    <xs:attribute ref="xsi:noNamespaceSchemaLocation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </xs:complexType>
+  <xs:complexType name="shiptoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="address" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="city" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:string" name="country" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:enumeration value="Empire Burlesque"/>
+            <xs:enumeration value="Hide your heart"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="note" minOccurs="0" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element type="xs:byte" name="quantity" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <xs:element name="price">
+        <xs:simpleType>
+          <xs:restriction base="xs:float" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:enumeration value="10.90"/>
+            <xs:enumeration value="9.90"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

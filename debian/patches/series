@@ -1,2 +1,4 @@
 scripts.patch
-saxon_9.7.patch
+saxon-compatibility.patch
+xmlbeans-compatibility.patch
+javasource-option.patch

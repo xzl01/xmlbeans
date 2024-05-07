@@ -1,3 +1,25 @@
+xmlbeans (4.0.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Remove dangling symlink to xmlbeans_xpath.jar (Closes: #1012448)
+
+ -- tony mancill <tmancill@debian.org>  Wed, 29 Jun 2022 21:36:02 -0700
+
+xmlbeans (4.0.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #981936)
+    - No longer build the xpath jar
+    - Refreshed the patches
+    - Updated the Maven poms
+    - Depend on libjavaparser-java (>= 3.16)
+    - Restored the javasource option to preserve the backward compatibility
+  * Standards-Version updated to 4.5.1
+  * Switch to debhelper level 13
+  * Updated the watch file
+  * Standards-Version updated to 4.6.1
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 16 May 2022 11:34:47 +0200
+
 xmlbeans (3.0.2-1) unstable; urgency=medium
 
   * New upstream release

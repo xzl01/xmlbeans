@@ -1,0 +1,11 @@
+--- a/src/main/java/org/apache/xmlbeans/impl/xpath/saxon/SaxonXPath.java
++++ b/src/main/java/org/apache/xmlbeans/impl/xpath/saxon/SaxonXPath.java
+@@ -111,7 +111,7 @@
+             dc.setContextItem(contextItem);
+             dc.setVariable(thisVar, contextItem);
+ 
+-            List<Item> saxonNodes = xpath.evaluate(dc);
++            List<Item> saxonNodes = (List) xpath.evaluate(dc);
+             List<Object> retNodes = new ArrayList<>(saxonNodes.size());
+             for (Item o : saxonNodes) {
+                 if (o instanceof DOMNodeWrapper) {

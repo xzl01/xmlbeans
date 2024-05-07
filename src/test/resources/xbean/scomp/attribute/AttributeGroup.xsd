@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://xbean/scomp/attribute/AttributeGroup"
+  targetNamespace="http://xbean/scomp/attribute/AttributeGroup"
+  >
+ <xsd:attribute name="globalAttr" type="xsd:decimal"/>
+ <xsd:attributeGroup name="simpleGroup">
+     <xsd:attribute name="date" type="xsd:date"/>
+ </xsd:attributeGroup>
+
+ <xsd:attributeGroup name="AttGroup">
+     <xsd:attribute name="ID" type="xsd:ID" use="required"/>
+     <xsd:attribute name="version" type="xsd:decimal"/>
+     <xsd:attribute ref="globalAttr"/>
+     <xsd:anyAttribute namespace="##other" processContents="lax"/>
+ </xsd:attributeGroup>
+
+  <xsd:complexType name="GlobalT">
+      <xsd:sequence>
+          <xsd:element name="child1" minOccurs="0"/>
+          <xsd:element name="child2"/>
+      </xsd:sequence>
+      <xsd:attributeGroup ref="AttGroup"/>
+  </xsd:complexType>
+
+  <xsd:element name="AttGroupElt" type="GlobalT"/>
+</xsd:schema>

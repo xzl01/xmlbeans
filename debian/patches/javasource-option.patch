@@ -1,0 +1,37 @@
+Description: Restores the javasource option to preserve the backward compatibility
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/src/main/java/org/apache/xmlbeans/impl/tool/SchemaCompiler.java
++++ b/src/main/java/org/apache/xmlbeans/impl/tool/SchemaCompiler.java
+@@ -111,6 +111,7 @@
+         opts.add("extensionParms");
+         opts.add("allowmdef");
+         opts.add("catalog");
++        opts.add("javasource");
+         CommandLine cl = new CommandLine(args, flags, opts);
+ 
+         if (cl.getOpt("h") != null || cl.getOpt("help") != null || cl.getOpt("usage") != null) {
+@@ -632,6 +633,10 @@
+         public void setEntityResolver(EntityResolver entityResolver) {
+             this.entityResolver = entityResolver;
+         }
++
++        @Deprecated
++        public void setJavaSource(String version) {
++        }
+     }
+ 
+     private static SchemaTypeSystem loadTypeSystem(String name, File[] xsdFiles, File[] wsdlFiles, URL[] urlFiles, File[] configFiles,
+--- a/src/main/java/org/apache/xmlbeans/impl/tool/XMLBean.java
++++ b/src/main/java/org/apache/xmlbeans/impl/tool/XMLBean.java
+@@ -764,6 +764,10 @@
+         this.repackage = repackage;
+     }
+ 
++    @Deprecated
++    public void setJavaSource(String version) {
++    }
++
+     private static URI uriFromFile(File f) {
+         if (f == null) {
+             return null;

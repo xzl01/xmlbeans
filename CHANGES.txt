@@ -1,3 +1,26 @@
+Changes in V4.0.0 since V3.1.0
+
+* XMLBEANS-548: XmlDocumentProperties.setStandalone is ignored when saving
+* XMLBEANS-542: SAX Parsing should not fail if parser does not allow the setting of declaration-handler
+* XMLBEANS-541, XMLBEANS-544, XMLBEANS-545: Fixes to ant build scripts
+* XMLBEANS-540: Prevent trim of elements when pretty print is used
+* XMLBEANS-539: Support Saxon-HE 10 as an XPath engine
+
+Changes in V3.1.0 since V3.0.2
+
+* update build and deployment artifacts to standardize naming and remove unused items 
+* XMLBEANS-502: Allow to clear all ThreadLocals from the current thread
+* XMLBEANS-503: Allow to specify -nowarn in the Ant task
+* XMLBEANS-537: Add missing StscState.end() to avoid memory leaks
+* XMLBEANS-532: Streamline build.xml and update tests to Junit4
+* XMLBEANS-531: Fix schema gen of attributes
+* XMLBEANS-530: Allow namespaces of XmlOptions to be passed to the XQuery engine
+* XMLBEANS-529: Format xmlobjects to the correct string representation on XPath access
+* XMLBEANS-528: Allow document locator to be set after initialization
+* XMLBEANS-527: Rename shell script directory, to align on typical directory layout
+* XMLBEANS-526: Fix issue with loading META-INF/services files
+* XMLBEANS-538: fix issue with parsing DOM with DTD
+
 Changes in V3.0.2 since V3.0.1
 
 * XMLBEANS-520: wrong name for source(s) artifact

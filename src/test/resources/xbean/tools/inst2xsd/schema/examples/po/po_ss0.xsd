@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="productName"/>
+        <xs:element ref="quantity"/>
+        <xs:element ref="USPrice"/>
+        <xs:element ref="comment" minOccurs="0"/>
+        <xs:element ref="shipDate" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="partNum" use="optional" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="street">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="123 Maple Street"/>
+        <xs:enumeration value="8 Oak Avenue"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="productName">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="Lawnmower"/>
+        <xs:enumeration value="Baby Monitor"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="comment">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="Confirm this is electric"/>
+        <xs:enumeration value="Hurry, my lawn is going wild!"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="USPrice">
+    <xs:simpleType>
+      <xs:restriction base="xs:float" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="148.95"/>
+        <xs:enumeration value="39.98"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="item" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="purchaseOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="shipTo"/>
+        <xs:element ref="billTo"/>
+        <xs:element ref="comment"/>
+        <xs:element ref="items"/>
+      </xs:sequence>
+      <xs:attribute type="xs:date" name="orderDate" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shipTo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="street"/>
+        <xs:element ref="city"/>
+        <xs:element ref="state"/>
+        <xs:element ref="zip"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="country" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="state">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="CA"/>
+        <xs:enumeration value="PA"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="zip">
+    <xs:simpleType>
+      <xs:restriction base="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="90952"/>
+        <xs:enumeration value="95819"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="name">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="Alice Smith"/>
+        <xs:enumeration value="Robert Smith"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="quantity" type="xs:byte" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  <xs:element name="billTo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="street"/>
+        <xs:element ref="city"/>
+        <xs:element ref="state"/>
+        <xs:element ref="zip"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="country" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="city">
+    <xs:simpleType>
+      <xs:restriction base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:enumeration value="Mill Valley"/>
+        <xs:enumeration value="Old Town"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="shipDate" type="xs:date" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+</xs:schema>

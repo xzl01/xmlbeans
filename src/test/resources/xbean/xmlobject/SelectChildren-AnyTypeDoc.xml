@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 The Apache Software Foundation
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License. -->
+
+<sc:ElemWithAny xmlns:sc='http://openuri.org/test/selectChildren'
+                xmlns:abc='http://abc'
+                xmlns:def='http://def'
+                xmlns:xyz='http://xyz'>
+    <sc:simple>Simple String</sc:simple>
+    <!-- Adding any types -->
+    <abc:someElem1>ABC Namespace</abc:someElem1>
+    <def:someElem2>DEF Namespace</def:someElem2>
+    <xyz:someElem3>XYX Namespace</xyz:someElem3>
+    <!-- Same local name, different namespace -->
+    <abc:sameElem>ABC-SameElem</abc:sameElem>
+    <def:sameElem>DEF-SameElem</def:sameElem>
+    <xyz:sameElem>XYZ-SameElem</xyz:sameElem>
+</sc:ElemWithAny>
